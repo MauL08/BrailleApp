@@ -30,13 +30,19 @@ class MainState {
   void backSpace() {
     if (keyOutput.isNotEmpty) {
       keyOutput.removeLast();
+      charText.value = keyOutput.join('');
     }
     if (braillerOutput.isNotEmpty) {
       braillerOutput.removeLast();
+      brailleText.value = braillerOutput.join('');
     }
+    speak(charText.value);
   }
 
   void resetBar() {
+    charText.value = "";
+    brailleText.value = "";
+
     keyOutput.clear();
     braillerOutput.clear();
     resetInput();
@@ -52,14 +58,17 @@ class MainState {
       keyOutput.add(value1);
       braillerOutput.add(value2);
 
+      computeChar();
+      computeBraille();
+
       // Gabungan karakter Braille saat ini
       // String combinedKey = keyOutput.join("");
       // print(combinedKey);
 
       // speak(keyOutput.join(txt1)); // Memanggil speak untuk txt1
       // speak(keyOutput.join(txt2));
-      String txtGenap = computeChar();
-      speak(txtGenap);
+
+      speak(charText.value);
 
       resetInput();
     }
@@ -67,23 +76,23 @@ class MainState {
   }
 
   //Untuk ngambil karakter braille buat ditampilin
-  String computeBraille() {
-    String keyOutputText = keyOutput.join("");
-    String txtGanjil = "";
+  void computeBraille() {
+    String keyOutputText = braillerOutput.join("");
+    // String txtGanjil = "";
 
-    for (int i = 1; i < keyOutputText.length; i += 2) {
-      txtGanjil += keyOutputText[i];
-    }
+    // for (int i = 1; i < keyOutputText.length; i += 2) {
+    //   txtGanjil += keyOutputText[i];
+    // }
 
     // if (keyData.containsKey("#")) {
     //   txtGanjil = "#" + txtGanjil;
     // }
 
-    return txtGanjil;
+    brailleText.value = keyOutputText;
   }
 
   //Untuk ngambil angka awas buat ditampilin
-  String computeChar() {
+  void computeChar() {
     String keyOutputText = keyOutput.join("");
     String txtGenap = "";
 
@@ -121,9 +130,9 @@ class MainState {
         }
       }
 
-      return translatedText;
+      charText.value = translatedText;
     } else {
-      return txtGenap;
+      charText.value = keyOutputText;
     }
   }
 }

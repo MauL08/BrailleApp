@@ -50,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
           _activePointers--;
           if (_activePointers == 0) {
             state.execute();
+            state.resetInput();
           }
         });
       },
@@ -115,46 +116,65 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: const Text('Backspace'),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.width / 4,
+                        height: MediaQuery.of(context).size.width / 15,
                       ),
-                      SizedBox(
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.grey.withOpacity(0.8),
+                        ),
+                        padding: EdgeInsets.all(12),
                         width: MediaQuery.of(context).size.width,
+                        height: 100,
                         child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                // keyOutput.isNotEmpty &&
-                                //         keyData.containsKey(keyOutput.join())
-                                //     ? keyData[keyOutput.join()]["txt1"]
-                                //     : "happy",
-                                // keyOutput.isNotEmpty ? keyOutput.join("") : "",
-                                state.brailleText.value,
-                                style: const TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
+                          child: SingleChildScrollView(
+                            child: Text(
+                              // keyOutput.isNotEmpty &&
+                              //         keyData.containsKey(keyOutput.join())
+                              //     ? keyData[keyOutput.join()]["txt1"]
+                              //     : "happy",
+                              // keyOutput.isNotEmpty ? keyOutput.join("") : "",
+                              state.brailleText.value,
+                              style: const TextStyle(
+                                fontSize: 36,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
                               ),
-                              Text(
-                                // keyOutput.isNotEmpty &&
-                                //         keyData.containsKey(keyOutput.join(""))
-                                //     ? keyData[keyOutput.join("")]["value1"]
-                                //     : "",
-                                // keyOutput.isNotEmpty ? keyOutput.join("") : "",
-                                state.charText.value,
-                                style: const TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.width / 4,
+                        height: 8,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: Colors.grey.withOpacity(0.8),
+                        ),
+                        padding: EdgeInsets.all(12),
+                        width: MediaQuery.of(context).size.width,
+                        height: 100,
+                        child: Center(
+                          child: SingleChildScrollView(
+                            child: Text(
+                              // keyOutput.isNotEmpty &&
+                              //         keyData.containsKey(keyOutput.join(""))
+                              //     ? keyData[keyOutput.join("")]["value1"]
+                              //     : "",
+                              // keyOutput.isNotEmpty ? keyOutput.join("") : "",
+                              state.charText.value,
+                              style: const TextStyle(
+                                fontSize: 36,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.width / 15,
                       ),
                       SizedBox(
                         width: MediaQuery.of(context).size.width / 1.5,
