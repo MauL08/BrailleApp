@@ -8,6 +8,7 @@ class KeyData {
     "001001": {"value1": "*", "value2": "\u2822"},
     "100100": {"value1": "/", "value2": "\u280C"},
     "020020": {"value1": "=", "value2": "\u2812"},
+    "000110": {"value1": "^", "value2": "\u2818"},
 
     // Alphabet
     "001000": {"value1": "a", "value2": "\u2801"},

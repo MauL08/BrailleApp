@@ -35,11 +35,11 @@ class MainState {
   void backSpace() {
     if (keyOutput.isNotEmpty) {
       keyOutput.removeLast();
-      charText.value = keyOutput.join('');
+      compute();
     }
     if (braillerOutput.isNotEmpty) {
       braillerOutput.removeLast();
-      brailleText.value = braillerOutput.join(' ');
+      compute();
     }
     speak(charText.value);
   }
@@ -100,6 +100,7 @@ class MainState {
     Expression exp = p.parse(finaluserinput);
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
+
     keyOutput.clear();
     charText.value = eval.toString();
     speak(charText.value);
