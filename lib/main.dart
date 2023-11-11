@@ -1,4 +1,5 @@
 import 'package:braille_app/state.dart';
+import 'package:braille_app/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
@@ -64,80 +65,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GestureDetector(
-                      onDoubleTapDown: (_) {
-                        state.setInput(3, '2');
-                      },
-                      onTapDown: (_) {
+                    TapButton(
+                      title: '4',
+                      oneTap: (_) {
                         state.setInput(3, '1');
                       },
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(48),
-                        ),
-                        onPressed: () {},
-                        child: Transform.rotate(
-                          angle: -math.pi / 2,
-                          child: Text(
-                            '4',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onDoubleTapDown: (_) {
-                        state.setInput(4, '2');
+                      doubleTap: (_) {
+                        state.setInput(3, '2');
                       },
-                      onTapDown: (_) {
+                    ),
+                    TapButton(
+                      title: '5',
+                      oneTap: (_) {
                         state.setInput(4, '1');
                       },
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(48),
-                        ),
-                        onPressed: () {},
-                        child: Transform.rotate(
-                          angle: -math.pi / 2,
-                          child: Text(
-                            '5',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onDoubleTapDown: (_) {
-                        state.setInput(5, '2');
+                      doubleTap: (_) {
+                        state.setInput(4, '2');
                       },
-                      onTapDown: (_) {
+                    ),
+                    TapButton(
+                      title: '6',
+                      oneTap: (_) {
                         state.setInput(5, '1');
                       },
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(48),
-                        ),
-                        onPressed: () {},
-                        child: Transform.rotate(
-                          angle: -math.pi / 2,
-                          child: Text(
-                            '6',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
+                      doubleTap: (_) {
+                        state.setInput(5, '2');
+                      },
                     ),
                   ],
                 ),
@@ -156,15 +109,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           RichText(
                             text: TextSpan(children: [
-                              TextSpan(
+                              const TextSpan(
                                 text: "Math Mode : ",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                               TextSpan(
-                                text:
-                                    "${state.isCharNumber.value ? "On" : "Off"}",
+                                text: state.isCharNumber.value ? "On" : "Off",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: state.isCharNumber.value
@@ -212,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             borderRadius: BorderRadius.circular(8),
                             color: Colors.grey.withOpacity(0.8),
                           ),
-                          padding: EdgeInsets.all(12),
+                          padding: const EdgeInsets.all(12),
                           width: MediaQuery.of(context).size.width,
                           height: 100,
                           child: Align(
@@ -259,80 +211,32 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GestureDetector(
-                      onDoubleTapDown: (_) {
-                        state.setInput(2, '2');
-                      },
-                      onTapDown: (_) {
+                    TapButton(
+                      title: '3',
+                      oneTap: (_) {
                         state.setInput(2, '1');
                       },
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(48),
-                        ),
-                        onPressed: () {},
-                        child: Transform.rotate(
-                          angle: -math.pi / 2,
-                          child: Text(
-                            '3',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onDoubleTapDown: (_) {
-                        state.setInput(1, '2');
+                      doubleTap: (_) {
+                        state.setInput(2, '2');
                       },
-                      onTapDown: (_) {
+                    ),
+                    TapButton(
+                      title: '2',
+                      oneTap: (_) {
                         state.setInput(1, '1');
                       },
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(48),
-                        ),
-                        onPressed: () {},
-                        child: Transform.rotate(
-                          angle: -math.pi / 2,
-                          child: Text(
-                            '2',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onDoubleTapDown: (_) {
-                        state.setInput(0, '2');
+                      doubleTap: (_) {
+                        state.setInput(1, '2');
                       },
-                      onTapDown: (_) {
+                    ),
+                    TapButton(
+                      title: '1',
+                      oneTap: (_) {
                         state.setInput(0, '1');
                       },
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(48),
-                        ),
-                        onPressed: () {},
-                        child: Transform.rotate(
-                          angle: -math.pi / 2,
-                          child: Text(
-                            '1',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
+                      doubleTap: (_) {
+                        state.setInput(0, '2');
+                      },
                     ),
                   ],
                 ),
