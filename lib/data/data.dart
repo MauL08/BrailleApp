@@ -1,8 +1,15 @@
 class KeyData {
   Map<String, dynamic> data = {
     "100111": {"value1": "#", "value2": "\u283C"},
-    "010001": {"value1": "+", "value2": "\u2822"},
-    // "010000": {"value1": "1", "value2": "\u2813"},
+
+    // Math Expression
+    "010001": {"value1": "+", "value2": "\u2823"},
+    "100010": {"value1": "-", "value2": "\u2814"},
+    "001001": {"value1": "*", "value2": "\u2822"},
+    "100100": {"value1": "/", "value2": "\u280C"},
+    "020020": {"value1": "=", "value2": "\u2812"},
+
+    // Alphabet
     "001000": {"value1": "a", "value2": "\u2801"},
     "011000": {"value1": "b", "value2": "\u2803"},
     "001100": {"value1": "c", "value2": "\u2809"},
@@ -29,6 +36,5 @@ class KeyData {
     "101101": {"value1": "x", "value2": "\u282D"},
     "101111": {"value1": "y", "value2": "\u283D"},
     "101011": {"value1": "z", "value2": "\u2835"},
-    // "100101": {"value1": "#", "value2": "\u283C"},
   };
 }

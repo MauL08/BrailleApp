@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:braille_app/state.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -64,42 +66,78 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Transform.rotate(
-                      angle: -math.pi / 2,
-                      child: GestureDetector(
-                        onTapDown: (_) {
-                          state.setInput(3, '1');
-                        },
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 54,
-                          child: Text('4'),
+                    GestureDetector(
+                      onDoubleTapDown: (_) {
+                        state.setInput(3, '2');
+                      },
+                      onTapDown: (_) {
+                        state.setInput(3, '1');
+                      },
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(48),
+                        ),
+                        onPressed: () {},
+                        child: Transform.rotate(
+                          angle: -math.pi / 2,
+                          child: Text(
+                            '4',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                    Transform.rotate(
-                      angle: -math.pi / 2,
-                      child: GestureDetector(
-                        onTapDown: (_) {
-                          state.setInput(4, '1');
-                        },
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 54,
-                          child: Text('5'),
+                    GestureDetector(
+                      onDoubleTapDown: (_) {
+                        state.setInput(4, '2');
+                      },
+                      onTapDown: (_) {
+                        state.setInput(4, '1');
+                      },
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(48),
+                        ),
+                        onPressed: () {},
+                        child: Transform.rotate(
+                          angle: -math.pi / 2,
+                          child: Text(
+                            '5',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                    Transform.rotate(
-                      angle: -math.pi / 2,
-                      child: GestureDetector(
-                        onTapDown: (_) {
-                          state.setInput(5, '1');
-                        },
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 54,
-                          child: Text('6'),
+                    GestureDetector(
+                      onDoubleTapDown: (_) {
+                        state.setInput(5, '2');
+                      },
+                      onTapDown: (_) {
+                        state.setInput(5, '1');
+                      },
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(48),
+                        ),
+                        onPressed: () {},
+                        child: Transform.rotate(
+                          angle: -math.pi / 2,
+                          child: Text(
+                            '6',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -109,70 +147,92 @@ class _MyHomePageState extends State<MyHomePage> {
                   angle: -math.pi / 2,
                   child: Column(
                     children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          state.backSpace();
-                        },
-                        child: const Text('Backspace'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              state.backSpace();
+                            },
+                            child: const Text('Backspace'),
+                          ),
+                          RichText(
+                            text: TextSpan(children: [
+                              TextSpan(
+                                text: "Math Mode : ",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              TextSpan(
+                                text:
+                                    "${state.isCharNumber.value ? "On" : "Off"}",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: state.isCharNumber.value
+                                      ? Colors.green.shade800
+                                      : Colors.red,
+                                ),
+                              )
+                            ]),
+                          ),
+                        ],
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.width / 15,
                       ),
+                      // // Container(
+                      // //   decoration: BoxDecoration(
+                      // //     borderRadius: BorderRadius.circular(8),
+                      // //     color: Colors.grey.withOpacity(0.8),
+                      // //   ),
+                      // //   padding: EdgeInsets.all(12),
+                      // //   width: MediaQuery.of(context).size.width,
+                      // //   height: 100,
+                      // //   child: Align(
+                      // //     alignment: Alignment.centerRight,
+                      // //     child: SingleChildScrollView(
+                      // //       reverse: true,
+                      // //       scrollDirection: Axis.horizontal,
+                      // //       child: Text(
+                      // //         state.brailleText.value,
+                      // //         style: const TextStyle(
+                      // //           fontSize: 36,
+                      // //           fontWeight: FontWeight.bold,
+                      // //           color: Colors.black,
+                      // //         ),
+                      // //         textAlign: TextAlign.right,
+                      // //       ),
+                      // //     ),
+                      // //   ),
+                      // // ),
+                      // SizedBox(
+                      //   height: 8,
+                      // ),
                       Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.grey.withOpacity(0.8),
-                        ),
-                        padding: EdgeInsets.all(12),
-                        width: MediaQuery.of(context).size.width,
-                        height: 100,
-                        child: Center(
-                          child: SingleChildScrollView(
-                            child: Text(
-                              // keyOutput.isNotEmpty &&
-                              //         keyData.containsKey(keyOutput.join())
-                              //     ? keyData[keyOutput.join()]["txt1"]
-                              //     : "happy",
-                              // keyOutput.isNotEmpty ? keyOutput.join("") : "",
-                              state.brailleText.value,
-                              style: const TextStyle(
-                                fontSize: 36,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: Colors.grey.withOpacity(0.8),
+                          ),
+                          padding: EdgeInsets.all(12),
+                          width: MediaQuery.of(context).size.width,
+                          height: 100,
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: SingleChildScrollView(
+                              reverse: true,
+                              scrollDirection: Axis.horizontal,
+                              child: Text(
+                                state.charText.value,
+                                style: const TextStyle(
+                                  fontSize: 36,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                                textAlign: TextAlign.right,
                               ),
                             ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: Colors.grey.withOpacity(0.8),
-                        ),
-                        padding: EdgeInsets.all(12),
-                        width: MediaQuery.of(context).size.width,
-                        height: 100,
-                        child: Center(
-                          child: SingleChildScrollView(
-                            child: Text(
-                              // keyOutput.isNotEmpty &&
-                              //         keyData.containsKey(keyOutput.join(""))
-                              //     ? keyData[keyOutput.join("")]["value1"]
-                              //     : "",
-                              // keyOutput.isNotEmpty ? keyOutput.join("") : "",
-                              state.charText.value,
-                              style: const TextStyle(
-                                fontSize: 36,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                          )),
                       SizedBox(
                         height: MediaQuery.of(context).size.width / 15,
                       ),
@@ -187,7 +247,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             setState(() {
                               if (value == 100) {
                                 _value = 0;
-                                state.resetBar();
+                                state.reset();
                               } else {
                                 _value = value;
                               }
@@ -201,42 +261,78 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Transform.rotate(
-                      angle: -math.pi / 2,
-                      child: GestureDetector(
-                        onTapDown: (_) {
-                          state.setInput(2, '1');
-                        },
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 54,
-                          child: Text('3'),
+                    GestureDetector(
+                      onDoubleTapDown: (_) {
+                        state.setInput(2, '2');
+                      },
+                      onTapDown: (_) {
+                        state.setInput(2, '1');
+                      },
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(48),
+                        ),
+                        onPressed: () {},
+                        child: Transform.rotate(
+                          angle: -math.pi / 2,
+                          child: Text(
+                            '3',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                    Transform.rotate(
-                      angle: -math.pi / 2,
-                      child: GestureDetector(
-                        onTapDown: (_) {
-                          state.setInput(1, '1');
-                        },
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 54,
-                          child: Text('2'),
+                    GestureDetector(
+                      onDoubleTapDown: (_) {
+                        state.setInput(1, '2');
+                      },
+                      onTapDown: (_) {
+                        state.setInput(1, '1');
+                      },
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(48),
+                        ),
+                        onPressed: () {},
+                        child: Transform.rotate(
+                          angle: -math.pi / 2,
+                          child: Text(
+                            '2',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                    Transform.rotate(
-                      angle: -math.pi / 2,
-                      child: GestureDetector(
-                        onTapDown: (_) {
-                          state.setInput(0, '1');
-                        },
-                        child: const CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 54,
-                          child: Text('1'),
+                    GestureDetector(
+                      onDoubleTapDown: (_) {
+                        state.setInput(0, '2');
+                      },
+                      onTapDown: (_) {
+                        state.setInput(0, '1');
+                      },
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          padding: EdgeInsets.all(48),
+                        ),
+                        onPressed: () {},
+                        child: Transform.rotate(
+                          angle: -math.pi / 2,
+                          child: Text(
+                            '1',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
                       ),
                     ),
