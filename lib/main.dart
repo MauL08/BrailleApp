@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:braille_app/state.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
